@@ -408,6 +408,10 @@ Before launch, verify:
 
 ## 9. Deployment
 
-- **Live URL:** https://reliantcare.netlify.app
+- **Live URL:** https://www.reliantcarenetwork.com
+- **Backup URL:** https://reliantcare.netlify.app
 - **GitHub:** https://github.com/ocdeployments/reliantcare
 - **Netlify Site ID:** a4d7979f-23c0-4109-b7f7-1603a429929c
+- **Domain:** reliantcarenetwork.com (Spaceship, DNS managed via Spaceship Advanced DNS)
+- **DNS:** www CNAME → reliantcare.netlify.app | Apex A → 75.2.60.5 (via Netlify fallback)
+- **Email pending:** info@reliantcarenetwork.com via Zoho Mail

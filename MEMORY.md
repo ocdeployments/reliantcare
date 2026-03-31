@@ -267,12 +267,22 @@ Border:         #E5E5E3  (subtle)
 - Romy's USER.md updated with project context
 - Project memory file created (this file)
 - GitHub repo created: `https://github.com/ocdeployments/reliantcare`
-- **LIVE on Netlify: https://reliantcare.netlify.app** ← THE BIG ONE
+- **LIVE on real domain: https://www.reliantcarenetwork.com** ← THE BIG ONE
+- Supabase email capture fully wired
+- Privacy policy page live
+- Corporate email: `info@reliantcarenetwork.com` created (Zoho Mail)
+- DNS propagated, Zoho MX records added
+- All outreach messages drafted and ready to post
+- Caregiver portal spec written
+
+### Key Files Added
+- `reliantcare/OUTREACH.md` — all Reddit, Facebook, LinkedIn, email templates
+- `reliantcare/PORTAL-SPEC.md` — caregiver portal full spec
 
 ### ⏳ Pending — Next Steps
-1. Privacy policy page (needed before public launch)
-2. Connect email form to Supabase backend (waitlist table)
-3. Supabase account setup (free tier)
+1. ~~Connect email form to Supabase backend~~ ✅ DONE
+2. ~~Privacy policy page~~ ✅ DONE
+3. Corporate email: `info@reliantcare.network` via Zoho Mail (domain already owned)
 4. Outreach begins — Reddit posts, Facebook groups, caregiver DMs
 5. Caregiver portal design spec
 

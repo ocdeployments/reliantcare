@@ -95,6 +95,18 @@ POST to /api/waitlist (Next.js route OR Supabase Edge Function)
 
 ---
 
+## Privacy Policy
+
+- `public/privacy.html` — standalone page, self-contained CSS, matches brand. This is the correct approach: separate HTML file, not React-routed page. Put in `public/` so Vite copies it to `dist/` on every build automatically.
+- Footer link in App.jsx must point to `/privacy.html` (actual file), not `/privacy` (Netlify won't know to route that)
+
+## Supabase Table (Created via SQL Editor — NOT via API)
+
+- Anon key CANNOT create tables via REST API — `access to schema is forbidden`
+- Solution: Create table manually in Supabase SQL Editor (supabase.com → SQL Editor → New Query → run CREATE TABLE SQL)
+- Table created: `public.waitlist` (id, email, source, created_at)
+- RLS enabled with `anon` INSERT and SELECT policies
+
 ## Deployment Status
 
 ### Current
