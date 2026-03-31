@@ -366,13 +366,13 @@ const steps = [
   },
   {
     num: '02',
-    title: 'Agencies confirm your history',
-    desc: 'Every agency you work with verifies your shift history and adds their rating. Your portfolio grows stronger with every engagement.',
+    title: 'Your history gets verified over time',
+    desc: 'Every engagement you log builds toward a verified record. The more agencies confirm your work, the stronger your portfolio becomes.',
   },
   {
     num: '03',
-    title: 'Agencies find you',
-    desc: 'When a agency needs someone with your skills, your verified portfolio appears in their search. No applications. No phone calls. No starting from zero.',
+    title: 'Agencies can find you',
+    desc: 'As your record grows, agencies on the platform can search and find verified caregivers — without you filing a single application.',
   },
 ]
 
