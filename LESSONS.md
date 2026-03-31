@@ -100,11 +100,21 @@ POST to /api/waitlist (Next.js route OR Supabase Edge Function)
 ### Current
 - Dev server: running on `localhost:5173`
 - Production build: ✅ `reliantcare/dist/` (verified working)
+- GitHub: ✅ `https://github.com/ocdeployments/reliantcare`
+- Netlify: ✅ **LIVE at https://reliantcare.netlify.app**
 
-### Pending — Requires Romy's Action
-1. Create GitHub repo for `reliantcare/`
-2. Push code to GitHub
-3. Go to vercel.com → Connect repo → Deploy (one click)
+### Deploy via Netlify API (Headlessly)
+```bash
+# 1. Create site
+curl -X POST -H "Authorization: Bearer TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"name":"sitename"}' \
+  "https://api.netlify.com/api/v1/sites"
+
+# 2. Deploy (needs netlify-cli installed)
+netlify deploy --dir=dist --prod --site=SITE_ID
+# Set token with: NETLIFY_AUTH_TOKEN=TOKEN netlify deploy ...
+```
 
 ### Deploy Config Ready
 - `vercel.json` — framework: vite, buildCommand, outputDirectory

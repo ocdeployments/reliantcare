@@ -266,13 +266,15 @@ Border:         #E5E5E3  (subtle)
 - Generic LESSONS.md updated
 - Romy's USER.md updated with project context
 - Project memory file created (this file)
+- GitHub repo created: `https://github.com/ocdeployments/reliantcare`
+- **LIVE on Netlify: https://reliantcare.netlify.app** ← THE BIG ONE
 
-### ⏳ Pending — Needs Romy Action
-1. **GitHub:** Create GitHub repo, push `reliantcare/` folder
-2. **Vercel:** Go to vercel.com → Import from GitHub → Deploy (one click)
-3. **Domain:** (optional) Connect custom domain after Vercel deploy
-4. **Supabase:** Create account, set up waitlist table
-5. **Email form:** Connect to real Supabase backend
+### ⏳ Pending — Next Steps
+1. Privacy policy page (needed before public launch)
+2. Connect email form to Supabase backend (waitlist table)
+3. Supabase account setup (free tier)
+4. Outreach begins — Reddit posts, Facebook groups, caregiver DMs
+5. Caregiver portal design spec
 
 ### 🔜 Next (After Deploy)
 1. Real email capture (Supabase edge function)

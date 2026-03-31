@@ -14,6 +14,23 @@ import {
 } from 'lucide-react'
 
 // ──────────────────────────────────────────────
+// SIMPLE ROUTER
+// ──────────────────────────────────────────────
+function useRouter() {
+  const [page, setPage] = useState(window.location.pathname)
+  useEffect(() => {
+    const handleNavigate = () => setPage(window.location.pathname)
+    window.addEventListener('navigate', handleNavigate)
+    return () => window.removeEventListener('navigate', handleNavigate)
+  }, [])
+  const navigate = (path) => {
+    window.history.pushState({}, '', path)
+    window.dispatchEvent(new Event('navigate'))
+  }
+  return { page, navigate }
+}
+
+// ──────────────────────────────────────────────
 // NAVIGATION
 // ──────────────────────────────────────────────
 function Nav({ onJoinClick }) {
@@ -28,15 +45,11 @@ function Nav({ onJoinClick }) {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white/95 backdrop-blur-sm shadow-sm'
-          : 'bg-transparent'
+        scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <span className="text-xl font-extrabold text-navy tracking-tight">
-          ReliantCare
-        </span>
+        <a href="/" className="text-xl font-extrabold text-navy tracking-tight">ReliantCare</a>
         <button
           onClick={onJoinClick}
           className="bg-amber text-navy font-semibold text-sm px-5 py-2.5 rounded-xl hover:bg-amber-dark transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
@@ -51,7 +64,7 @@ function Nav({ onJoinClick }) {
 // ──────────────────────────────────────────────
 // EMAIL FORM
 // ──────────────────────────────────────────────
-function EmailForm({ variant = 'default', buttonText = 'Build My Profile — It\'s Free', id }) {
+function EmailForm({ variant = 'default', buttonText = "Build My Profile — It's Free", id }) {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState('idle') // idle | loading | success | error
   const [errorMsg, setErrorMsg] = useState('')
@@ -68,9 +81,23 @@ function EmailForm({ variant = 'default', buttonText = 'Build My Profile — It\
       return
     }
     setStatus('loading')
-    // Simulate API call — replace with real Supabase fetch
-    await new Promise((r) => setTimeout(r, 1000))
-    setStatus('success')
+    try {
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'landing_page' }),
+      })
+      if (response.ok) {
+        setStatus('success')
+      } else {
+        const data = await response.json()
+        setStatus('error')
+        setErrorMsg(data.error || 'Something went wrong. Please try again.')
+      }
+    } catch {
+      setStatus('error')
+      setErrorMsg('Network error. Please check your connection and try again.')
+    }
   }
 
   if (status === 'success') {
@@ -91,12 +118,16 @@ function EmailForm({ variant = 'default', buttonText = 'Build My Profile — It\
     <div>
       <form
         onSubmit={handleSubmit}
-        className={`flex flex-col sm:flex-row gap-3 w-full max-w-lg mx-auto ${variant === 'hero' ? '' : ''}`}
+        className="flex flex-col sm:flex-row gap-3 w-full max-w-lg mx-auto"
         id={id}
+        name="waitlist"
+        data-netlify="true"
       >
+        <input type="hidden" name="form-name" value="waitlist" />
         <input
           ref={inputRef}
           type="email"
+          name="email"
           value={email}
           onChange={(e) => {
             setEmail(e.target.value)
@@ -104,9 +135,7 @@ function EmailForm({ variant = 'default', buttonText = 'Build My Profile — It\
           }}
           placeholder="Your email address"
           className={`flex-1 h-14 px-5 rounded-xl border-2 text-base text-navy placeholder:text-gray-400 outline-none transition-all duration-200 bg-white ${
-            status === 'error'
-              ? 'border-red-400 focus:border-red-500'
-              : 'border-border focus:border-navy'
+            status === 'error' ? 'border-red-400 focus:border-red-500' : 'border-border focus:border-navy'
           }`}
           disabled={status === 'loading'}
           autoComplete="email"
@@ -118,9 +147,7 @@ function EmailForm({ variant = 'default', buttonText = 'Build My Profile — It\
         >
           {status === 'loading' ? (
             <span className="w-5 h-5 border-2 border-navy/30 border-t-navy rounded-full animate-spin" />
-          ) : (
-            buttonText
-          )}
+          ) : buttonText}
         </button>
       </form>
       {status === 'error' && (
@@ -148,7 +175,6 @@ function Hero({ onJoinClick }) {
   return (
     <section className="pt-40 pb-24 px-6 bg-bg">
       <div className="max-w-3xl mx-auto text-center">
-        {/* Badge */}
         <div className="inline-flex items-center gap-2 bg-amber-light text-amber-dark text-sm font-semibold px-4 py-1.5 rounded-full mb-8 animate-fade-up opacity-0" style={{ animationDelay: '0ms', animationFillMode: 'forwards' }}>
           <span className="w-1.5 h-1.5 bg-amber-dark rounded-full" />
           Now accepting early waitlist
@@ -170,7 +196,6 @@ function Hero({ onJoinClick }) {
           </p>
         </div>
 
-        {/* Decorative dot grid */}
         <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
           <div
             className="absolute top-20 left-1/2 -translate-x-1/2 opacity-[0.035]"
@@ -198,13 +223,13 @@ const problems = [
   },
   {
     icon: Users,
-    title: 'Your reputation lives in someone else\'s file',
-    desc: 'Your shift history, your reliability record, your family ratings — none of it follows you when you leave. The agency owns it. You don\'t.',
+    title: "Your reputation lives in someone else's file",
+    desc: 'Your shift history, your reliability record, your family ratings — none of it follows you when you leave. The agency owns it. You do not.',
   },
   {
     icon: TrendingDown,
     title: 'The good ones leave. You know why.',
-    desc: 'Caregivers quit not because of the work — but because the system doesn\'t respect what they\'ve built. It all disappears at the door.',
+    desc: 'Caregivers quit not because of the work — but because the system does not respect what they have built. It all disappears at the door.',
   },
 ]
 
@@ -218,7 +243,6 @@ function ProblemSection() {
             The caregiving industry runs on gut feel.<br />And caregivers pay the price.
           </h2>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {problems.map((p, i) => (
             <div
@@ -251,7 +275,7 @@ const features = [
   {
     icon: Star,
     title: 'A score built from real work',
-    desc: 'Your reliability and care rating are verified by the agencies you\'ve worked with — and the families you\'ve cared for. Not self-reported. Not gameable.',
+    desc: "Your reliability and care rating are verified by the agencies you have worked with — and the families you have cared for. Not self-reported. Not gameable.",
   },
   {
     icon: Briefcase,
@@ -265,13 +289,11 @@ function SolutionSection() {
     <section className="py-24 px-6 bg-bg">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Text */}
           <div>
             <SectionLabel>What we built</SectionLabel>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-navy leading-tight mb-10">
               The first reputation system<br />built for caregivers.
             </h2>
-
             <div className="flex flex-col gap-8">
               {features.map((f, i) => (
                 <div key={i} className="reveal flex gap-5">
@@ -286,15 +308,10 @@ function SolutionSection() {
               ))}
             </div>
           </div>
-
-          {/* Profile Card Visual */}
           <div className="reveal flex justify-center lg:justify-end">
             <div className="bg-white rounded-2xl border border-border shadow-xl p-8 w-full max-w-sm">
-              {/* Profile header */}
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 rounded-full bg-navy flex items-center justify-center text-white font-extrabold text-lg">
-                  MT
-                </div>
+                <div className="w-14 h-14 rounded-full bg-navy flex items-center justify-center text-white font-extrabold text-lg">MT</div>
                 <div>
                   <p className="font-bold text-navy">Maria T.</p>
                   <p className="text-sm text-gray-400">PSW · Ottawa, ON</p>
@@ -303,8 +320,6 @@ function SolutionSection() {
                   <p className="text-xs font-bold text-green-600">Verified</p>
                 </div>
               </div>
-
-              {/* Score */}
               <div className="bg-bg-alt rounded-xl p-4 mb-5">
                 <div className="flex items-center justify-between mb-2">
                   <p className="text-sm font-semibold text-navy">Reliability Score</p>
@@ -315,8 +330,6 @@ function SolutionSection() {
                 </div>
                 <p className="text-xs text-gray-400 mt-1.5">Based on 214 confirmed shifts</p>
               </div>
-
-              {/* Credentials */}
               <div className="space-y-2.5 mb-5">
                 {['PSW Certification ✓', 'CPR/AED ✓', 'TB Test ✓', 'Vulnerable Sector ✓'].map((item) => (
                   <div key={item} className="flex items-center gap-2 text-sm text-navy">
@@ -325,15 +338,11 @@ function SolutionSection() {
                   </div>
                 ))}
               </div>
-
-              {/* Agencies */}
               <div>
                 <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Confirmed by</p>
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-wrap">
                   {['Bayshore', 'SE Health', 'CBI'].map((name) => (
-                    <span key={name} className="text-xs bg-bg-alt border border-border text-navy px-2.5 py-1 rounded-lg font-medium">
-                      {name}
-                    </span>
+                    <span key={name} className="text-xs bg-bg-alt border border-border text-navy px-2.5 py-1 rounded-lg font-medium">{name}</span>
                   ))}
                 </div>
               </div>
@@ -352,7 +361,7 @@ const steps = [
   {
     num: '01',
     title: 'Create your profile',
-    desc: 'Tell us who you are, what you\'ve done, and upload your credentials. Takes about 10 minutes.',
+    desc: "Tell us who you are, what you have done, and upload your credentials. Takes about 10 minutes.",
   },
   {
     num: '02',
@@ -362,7 +371,7 @@ const steps = [
   {
     num: '03',
     title: 'Your reputation follows you',
-    desc: 'One link. Share it with any agency. They see exactly who you are and what you\'ve done. No more starting from zero.',
+    desc: 'One link. Share it with any agency. They see exactly who you are and what you have done. No more starting from zero.',
   },
 ]
 
@@ -376,14 +385,10 @@ function HowItWorks() {
             Three steps. Ten minutes.<br />Yours forever.
           </h2>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {steps.map((s, i) => (
             <div key={i} className="reveal relative">
-              {/* Connector line */}
-              {i < 2 && (
-                <div className="hidden md:block absolute top-10 left-[calc(50%+32px)] right-[calc(-50%+32px)] h-px bg-border z-0" />
-              )}
+              {i < 2 && <div className="hidden md:block absolute top-10 left-[calc(50%+32px)] right-[calc(-50%+32px)] h-px bg-border z-0" />}
               <div className="relative z-10 flex flex-col items-start">
                 <span className="text-5xl font-extrabold text-amber mb-5">{s.num}</span>
                 <h3 className="text-xl font-bold text-navy mb-3">{s.title}</h3>
@@ -409,9 +414,7 @@ function SocialProof() {
           "I've been a PSW for 7 years. Every time I switched agencies, I lost everything — my standing, my references, my history. I had to prove myself from scratch every single time. This is the first thing that's actually for us."
         </blockquote>
         <div className="flex items-center justify-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-navy flex items-center justify-center text-white text-sm font-bold">
-            MT
-          </div>
+          <div className="w-10 h-10 rounded-full bg-navy flex items-center justify-center text-white text-sm font-bold">MT</div>
           <div className="text-left">
             <p className="font-semibold text-navy text-sm">Maria T.</p>
             <p className="text-gray-400 text-sm">PSW, Ottawa</p>
@@ -430,11 +433,8 @@ function ForAgencies({ onJoinClick }) {
     <section className="py-24 px-6 bg-navy">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Text */}
           <div>
-            <SectionLabel>
-              <span className="text-amber/80">For home care agencies</span>
-            </SectionLabel>
+            <SectionLabel><span className="text-amber/80">For home care agencies</span></SectionLabel>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight mb-6">
               Stop hiring blind.<br />Start hiring proven.
             </h2>
@@ -442,7 +442,7 @@ function ForAgencies({ onJoinClick }) {
               ReliantCare gives your agency a verified pool of pre-screened caregivers. You see real shift history, real reliability scores, and real feedback — before you make an offer.
             </p>
             <p className="text-gray-400 leading-relaxed mb-10">
-              {"Our AI recruiting agent handles the screening and scheduling so you're not losing hours to phone tag."}
+              Our AI recruiting agent handles the screening and scheduling so you are not losing hours to phone tag.
             </p>
             <button
               onClick={onJoinClick}
@@ -452,8 +452,6 @@ function ForAgencies({ onJoinClick }) {
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
-
-          {/* Stats */}
           <div className="grid grid-cols-2 gap-5">
             {[
               { stat: '60–75%', label: 'Annual caregiver turnover rate' },
@@ -479,11 +477,11 @@ function ForAgencies({ onJoinClick }) {
 const faqs = [
   {
     q: 'Is this really free for caregivers?',
-    a: 'Yes. Caregivers get a free profile forever. No credit card, no tiered plan, no catch. Agencies pay for access to the recruiting and screening tools. That\'s how we keep it free for the people who need it most.',
+    a: "Yes. Caregivers get a free profile forever. No credit card, no tiered plan, no catch. Agencies pay for access to the recruiting and screening tools. That's how we keep it free for the people who need it most.",
   },
   {
     q: 'How is my reputation verified?',
-    a: 'Your profile is built from data confirmed by the agencies you\'ve worked with — not self-reported claims. The more agencies that confirm your history, the stronger your profile becomes.',
+    a: 'Your profile is built from data confirmed by the agencies you have worked with — not self-reported claims. The more agencies that confirm your history, the stronger your profile becomes.',
   },
   {
     q: 'Who owns my data?',
@@ -495,27 +493,23 @@ const faqs = [
   },
   {
     q: 'When does this launch?',
-    a: 'We\'re building now. Early access opens to caregivers in Ontario first, then expands across Canada and into the US. Join the waitlist and we\'ll tell you first.',
+    a: 'We are building now. Early access opens to caregivers in Ontario first, then expands across Canada and into the US. Join the waitlist and we will tell you first.',
   },
   {
     q: 'What about family privacy?',
-    a: 'Family ratings are shared with your consent and are tied to your caregiver profile — not to the family\'s personal information. We don\'t store medical data, address, or anything beyond your caregiving history.',
+    a: "Family ratings are shared with your consent and are tied to your caregiver profile — not to the family's personal information. We do not store medical data, address, or anything beyond your caregiving history.",
   },
 ]
 
 function FAQ() {
   const [open, setOpen] = useState(null)
-
   return (
     <section className="py-24 px-6 bg-bg">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <SectionLabel>Questions</SectionLabel>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-navy">
-            The important stuff.
-          </h2>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-navy">The important stuff.</h2>
         </div>
-
         <div className="divide-y divide-border">
           {faqs.map((faq, i) => (
             <div key={i} className="py-5">
@@ -526,13 +520,9 @@ function FAQ() {
                 <span className={`font-semibold text-base transition-colors ${open === i ? 'text-navy' : 'text-gray-700 group-hover:text-navy'}`}>
                   {faq.q}
                 </span>
-                <ChevronDown
-                  className={`w-5 h-5 flex-shrink-0 mt-0.5 text-gray-400 transition-transform duration-200 ${open === i ? 'rotate-180 text-amber' : ''}`}
-                />
+                <ChevronDown className={`w-5 h-5 flex-shrink-0 mt-0.5 text-gray-400 transition-transform duration-200 ${open === i ? 'rotate-180 text-amber' : ''}`} />
               </button>
-              <div
-                className={`overflow-hidden transition-all duration-200 ${open === i ? 'max-h-96 opacity-100 mt-3' : 'max-h-0 opacity-0'}`}
-              >
+              <div className={`overflow-hidden transition-all duration-200 ${open === i ? 'max-h-96 opacity-100 mt-3' : 'max-h-0 opacity-0'}`}>
                 <p className="text-gray-500 leading-relaxed text-[15px]">{faq.a}</p>
               </div>
             </div>
@@ -554,9 +544,7 @@ function FinalCTA({ onJoinClick }) {
           The industry's been asking<br />for this for years.
         </h2>
         <p className="text-xl text-amber font-semibold mb-10">Be first.</p>
-
         <EmailForm buttonText="Build My Profile — It's Free" id="final-cta" />
-
         <div className="flex items-center justify-center gap-2 mt-4">
           <Lock className="w-3.5 h-3.5 text-gray-400" />
           <p className="text-sm text-gray-400">No credit card. No catch. Free forever.</p>
@@ -577,9 +565,10 @@ function Footer() {
           <p className="text-white font-extrabold text-lg">ReliantCare</p>
           <p className="text-gray-400 text-sm mt-0.5">Built for caregivers. Free forever.</p>
         </div>
-        <p className="text-gray-500 text-sm">
-          © 2026 ReliantCare Network. All rights reserved.
-        </p>
+        <div className="flex items-center gap-6">
+          <a href="/privacy.html" className="text-gray-400 text-sm hover:text-white transition-colors">Privacy Policy</a>
+          <p className="text-gray-500 text-sm">© 2026 ReliantCare Network</p>
+        </div>
       </div>
     </footer>
   )
@@ -593,27 +582,192 @@ function useReveal() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible')
-          }
+          if (entry.isIntersecting) entry.target.classList.add('visible')
         })
       },
       { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
     )
-    const elements = document.querySelectorAll('.reveal')
-    elements.forEach((el) => observer.observe(el))
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
     return () => observer.disconnect()
   }, [])
+}
+
+// ──────────────────────────────────────────────
+// PRIVACY PAGE
+// ──────────────────────────────────────────────
+function PrivacyPage() {
+  return (
+    <div className="min-h-screen bg-bg font-sans">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <a href="/" className="text-xl font-extrabold text-navy tracking-tight">ReliantCare</a>
+          <a href="/" className="text-sm text-gray-500 hover:text-navy transition-colors">← Back to home</a>
+        </div>
+      </nav>
+      <main className="pt-32 pb-24 px-6">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-sm text-gray-400 mb-4">Last updated: March 31, 2026</p>
+          <h1 className="text-4xl font-extrabold text-navy mb-4">Privacy Policy</h1>
+          <p className="text-lg text-gray-500 leading-relaxed mb-12">
+            ReliantCare Network ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains what data we collect, how we use it, and what rights you have.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-14">
+            {[
+              { label: 'Your data stays yours', desc: 'We never sell your information', Icon: Lock },
+              { label: 'No medical data', desc: "We don't collect health records", Icon: Shield },
+              { label: 'Delete anytime', desc: 'Request deletion at any time', Icon: Trash2 },
+            ].map(({ label, desc, Icon }, i) => (
+              <div key={i} className="bg-white border border-border rounded-xl p-5">
+                <Icon className="w-5 h-5 text-amber mb-3" />
+                <p className="font-semibold text-navy text-sm mb-1">{label}</p>
+                <p className="text-gray-400 text-xs">{desc}</p>
+              </div>
+            ))}
+          </div>
+          {[
+            {
+              title: 'What we collect',
+              icon: Shield,
+              body: (
+                <>
+                  <p className="text-gray-600 text-[15px] leading-relaxed">When you join the ReliantCare waitlist, we collect:</p>
+                  <ul className="list-disc pl-5 space-y-2 text-gray-600 text-[15px] mt-3">
+                    <li><strong>Email address</strong> — to notify you when early access opens</li>
+                    <li><strong>How you found us</strong> — so we know which channels are working</li>
+                    <li><strong>Device and browser information</strong> — collected automatically to help us improve the site</li>
+                  </ul>
+                  <p className="text-gray-600 text-[15px] leading-relaxed mt-3">We do <strong>not</strong> collect: health records, government IDs, financial information, or any medical or care-related personal data.</p>
+                </>
+              ),
+            },
+            {
+              title: 'How we use your data',
+              icon: Users,
+              body: (
+                <>
+                  <p className="text-gray-600 text-[15px] leading-relaxed">We use your information to:</p>
+                  <ul className="list-disc pl-5 space-y-2 text-gray-600 text-[15px] mt-3">
+                    <li>Notify you when ReliantCare early access is available</li>
+                    <li>Understand how many people are interested in the platform</li>
+                    <li>Improve the waitlist experience and future product</li>
+                    <li>Send occasional updates about the platform progress (no more than 1-2 per month)</li>
+                  </ul>
+                  <p className="text-gray-600 text-[15px] leading-relaxed mt-3">We <strong>never</strong> use your data for advertising, sell it to third parties, or share it with agencies or other users without your explicit consent.</p>
+                </>
+              ),
+            },
+            {
+              title: 'Cookies',
+              icon: Clock,
+              body: (
+                <p className="text-gray-600 text-[15px] leading-relaxed">
+                  We use minimal cookies — only what is necessary to keep the site functional and measure basic traffic. We do not use tracking cookies, advertising cookies, or any form of cross-site tracking. When we launch the full platform, we will update this policy and ask for your consent before setting any non-essential cookies.
+                </p>
+              ),
+            },
+            {
+              title: 'Data retention',
+              icon: Mail,
+              body: (
+                <>
+                  <p className="text-gray-600 text-[15px] leading-relaxed">
+                    Waitlist data is retained until you either unsubscribe or request deletion. You can ask us to delete your data at any time — no questions asked.
+                  </p>
+                  <p className="text-gray-600 text-[15px] leading-relaxed mt-3">
+                    When the full platform launches, we will provide full data export and deletion tools directly in your account settings.
+                  </p>
+                </>
+              ),
+            },
+            {
+              title: 'Platform-specific data (when launched)',
+              icon: Shield,
+              body: (
+                <>
+                  <p className="text-gray-600 text-[15px] leading-relaxed">
+                    When the full ReliantCare platform launches, we will collect additional information to power the reputation system:
+                  </p>
+                  <ul className="list-disc pl-5 space-y-2 text-gray-600 text-[15px] mt-3">
+                    <li><strong>Caregiver profiles</strong> — name, credentials, work history, city, availability</li>
+                    <li><strong>Ratings and reviews</strong> — submitted by agencies and families</li>
+                    <li><strong>Shift data</strong> — shift completion, punctuality, engagement history (from agencies)</li>
+                    <li><strong>Credential documents</strong> — uploaded once, verified by agencies, never shared publicly</li>
+                  </ul>
+                  <p className="text-gray-600 text-[15px] leading-relaxed mt-3">
+                    All platform data is encrypted in transit and at rest. Caregiver data is only visible to agencies you choose to share it with. Family ratings are shared only with your consent and are never tied to your personal identity.
+                  </p>
+                </>
+              ),
+            },
+            {
+              title: 'Your rights',
+              icon: Lock,
+              body: (
+                <>
+                  <p className="text-gray-600 text-[15px] leading-relaxed">You have the right to:</p>
+                  <ul className="list-disc pl-5 space-y-2 text-gray-600 text-[15px] mt-3">
+                    <li>Know what data we have about you</li>
+                    <li>Request deletion of your data at any time</li>
+                    <li>Opt out of any communications at any time</li>
+                    <li>Correct any inaccurate information</li>
+                  </ul>
+                  <p className="text-gray-600 text-[15px] leading-relaxed mt-3">To exercise any of these rights, email <strong>privacy@reliantcare.network</strong>. We will respond within 48 hours.</p>
+                </>
+              ),
+            },
+            {
+              title: 'Contact',
+              icon: Mail,
+              body: (
+                <p className="text-gray-600 text-[15px] leading-relaxed">
+                  Questions about this policy or your data?<br />
+                  <strong>Email:</strong> privacy@reliantcare.network<br />
+                  <strong>Website:</strong> https://reliantcare.netlify.app
+                </p>
+              ),
+            },
+          ].map(({ title, icon: Icon, body }, i) => (
+            <div key={i} className="border-t border-border pt-8">
+              <h2 className="text-xl font-bold text-navy flex items-center gap-2 mb-4">
+                <span className="text-amber"><Icon className="w-4 h-4" /></span>
+                {title}
+              </h2>
+              {body}
+            </div>
+          ))}
+          <div className="border-t border-border mt-8 pt-8">
+            <p className="text-gray-400 text-sm leading-relaxed">
+              We may update this Privacy Policy from time to time. If we make material changes, we will notify you by email (if you are on the waitlist) and update the "Last updated" date above.
+            </p>
+          </div>
+        </div>
+      </main>
+      <footer className="bg-navy py-8 px-6">
+        <div className="max-w-6xl mx-auto text-center">
+          <p className="text-white font-extrabold text-base">ReliantCare</p>
+          <p className="text-gray-400 text-sm mt-1">Built for caregivers. Free forever.</p>
+        </div>
+      </footer>
+    </div>
+  )
 }
 
 // ──────────────────────────────────────────────
 // APP ROOT
 // ──────────────────────────────────────────────
 export default function App() {
+  const { page, navigate } = useRouter()
   useReveal()
 
   const scrollToForm = () => {
-    document.getElementById('final-cta')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    navigate('/')
+    setTimeout(() => {
+      document.getElementById('final-cta')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }, 50)
+  }
+
+  if (page === '/privacy') {
+    return <PrivacyPage />
   }
 
   return (

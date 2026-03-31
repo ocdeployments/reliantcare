@@ -392,16 +392,22 @@ Family ratings are shared with your consent and are tied to your profile — not
 
 Before launch, verify:
 
-- [ ] Page loads in under 2 seconds
-- [ ] Mobile: looks great on iPhone SE (smallest common screen)
-- [ ] All buttons and links work
-- [ ] Email form validates and submits correctly
-- [ ] Success state appears after submit
-- [ ] FAQ accordion opens/closes correctly
-- [ ] Nav becomes solid after scroll
-- [ ] All fonts load correctly (Inter from Google Fonts)
-- [ ] No layout shift on load (elements don't jump)
-- [ ] OG meta tags set (title, description, image)
-- [ ] Favicon set with ReliantCare logo
-- [ ] Privacy policy page linked in footer
-- [ ] "Built for caregivers. Free forever." visible in footer
+- [x] Page loads in under 2 seconds
+- [x] Mobile: looks great on iPhone SE (smallest common screen)
+- [x] All buttons and links work
+- [x] Email form validates and submits correctly
+- [x] Success state appears after submit
+- [x] FAQ accordion opens/closes correctly
+- [x] Nav becomes solid after scroll
+- [x] All fonts load correctly (Inter from Google Fonts)
+- [x] No layout shift on load (elements don't jump)
+- [x] OG meta tags set (title, description, image)
+- [x] Favicon set with ReliantCare logo
+- [ ] Privacy policy page linked in footer (TODO)
+- [x] "Built for caregivers. Free forever." visible in footer
+
+## 9. Deployment
+
+- **Live URL:** https://reliantcare.netlify.app
+- **GitHub:** https://github.com/ocdeployments/reliantcare
+- **Netlify Site ID:** a4d7979f-23c0-4109-b7f7-1603a429929c
