@@ -180,19 +180,19 @@ function Hero({ onJoinClick }) {
           Now accepting early waitlist
         </div>
 
-        <h1 className="text-display-xs sm:text-display-sm md:text-display font-extrabold text-navy leading-[1.1] tracking-tight mb-6 animate-fade-up opacity-0" style={{ animationDelay: '80ms', animationFillMode: 'forwards' }}>
+        <h1 className="text-display-xs sm:text-display-sm md:text-display font-extrabold text-navy leading-[1.1] tracking-tight mb-4 animate-fade-up opacity-0" style={{ animationDelay: '80ms', animationFillMode: 'forwards' }}>
           Don't start<br className="hidden sm:block" /> from zero again.
         </h1>
 
         <p className="text-lg sm:text-xl text-gray-500 leading-relaxed max-w-2xl mx-auto mb-10 animate-fade-up opacity-0" style={{ animationDelay: '160ms', animationFillMode: 'forwards' }}>
-          ReliantCare Network builds your verified, portable career portfolio — free to start. Credentials, work history, and a reliability score that travels with you and opens doors to better opportunities.
+          Your credentials, your work history, your earned reputation — all in one place. Verified by the agencies you have worked with. And when the right agency is looking, they find you.
         </p>
 
         <div className="animate-fade-up opacity-0" style={{ animationDelay: '240ms', animationFillMode: 'forwards' }}>
-          <EmailForm buttonText="Build My Portfolio — Free to Start" />
+          <EmailForm buttonText="Build My Portfolio" />
           <p className="flex items-center justify-center gap-1.5 text-sm text-gray-400 mt-4">
             <Lock className="w-3.5 h-3.5" />
-            No credit card. No catch. Free to start.
+            Free for caregivers. Always.
           </p>
         </div>
 
@@ -218,18 +218,18 @@ function Hero({ onJoinClick }) {
 const problems = [
   {
     icon: XCircle,
-    title: 'You start from zero every time',
-    desc: "Every new agency asks you to re-upload every credential, re-verify every reference. Even if you've been doing this for 10 years.",
+    title: 'You start from zero. Every single time.',
+    desc: "Every new agency wants new references, new verification calls, new paperwork. Ten years of experience means nothing if you can't prove it.",
   },
   {
     icon: Users,
-    title: "Your reputation lives in someone else's file",
-    desc: 'Your shift history, your reliability record, your family ratings — none of it follows you when you leave. The agency owns it. You do not.',
+    title: "Your best work disappears when you leave.",
+    desc: 'The agencies you built relationships with — they own that history. You walk out with nothing. Your reputation stays behind in their file.',
   },
   {
     icon: TrendingDown,
-    title: 'The good ones leave. You know why.',
-    desc: 'Caregivers quit not because of the work — but because the system does not respect what they have built. It all disappears at the door.',
+    title: 'Nobody sees what you can actually do.',
+    desc: "Great caregivers get discovered by accident. Everyone else waits by the phone for calls that don't come. You're not unknown — you're just invisible to the right people.",
   },
 ]
 
@@ -269,18 +269,18 @@ function ProblemSection() {
 const features = [
   {
     icon: ShieldCheck,
-    title: 'Verified credentials. Uploaded once.',
-    desc: 'PSW certification, CPR, TB test, vulnerable sector check — uploaded once, confirmed by agencies, yours forever.',
+    title: 'Never chase paperwork again.',
+    desc: 'Upload your PSW certification, CPR, TB test, vulnerable sector check once. Every agency on the platform sees the same verified credentials — no more re-uploading, no more waiting.',
   },
   {
     icon: Star,
-    title: 'A score built from real work',
-    desc: "Your reliability and care rating are verified by the agencies you have worked with — and the families you have cared for. Not self-reported. Not gameable.",
+    title: 'Agencies find you. You don\'t chase them.',
+    desc: "Your verified portfolio is searchable 24 hours a day. When an agency needs someone with your exact skills, they come to you — not the other way around.",
   },
   {
     icon: Briefcase,
-    title: 'Your work history. Not a resume.',
-    desc: 'Every shift logged, every engagement rated, every reference named. A complete picture of who you are as a caregiver — built by the people who actually worked with you.',
+    title: 'Recognition that grows with every job.',
+    desc: 'Earn verified badges — Consistently Reliable, Dementia Specialist, Family Favourite — backed by the agencies who have actually worked with you. The longer you work, the stronger your portfolio becomes.',
   },
 ]
 
@@ -290,9 +290,9 @@ function SolutionSection() {
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
-            <SectionLabel>What we built</SectionLabel>
+            <SectionLabel>The platform</SectionLabel>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-navy leading-tight mb-10">
-              The first reputation system<br />built for caregivers.
+              Build it once.<br />Be known everywhere.
             </h2>
             <div className="flex flex-col gap-8">
               {features.map((f, i) => (
@@ -314,10 +314,7 @@ function SolutionSection() {
                 <div className="w-14 h-14 rounded-full bg-navy flex items-center justify-center text-white font-extrabold text-lg">MT</div>
                 <div>
                   <p className="font-bold text-navy">Maria T.</p>
-                  <p className="text-sm text-gray-400">PSW · Ottawa, ON</p>
-                </div>
-                <div className="ml-auto bg-green-50 border border-green-200 rounded-full px-3 py-1">
-                  <p className="text-xs font-bold text-green-600">Verified</p>
+                  <p className="text-sm text-gray-400">PSW · 8 yrs experience · Ottawa</p>
                 </div>
               </div>
               <div className="bg-bg-alt rounded-xl p-4 mb-5">
@@ -328,7 +325,11 @@ function SolutionSection() {
                 <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
                   <div className="h-full bg-amber rounded-full" style={{ width: '96%' }} />
                 </div>
-                <p className="text-xs text-gray-400 mt-1.5">Based on 214 confirmed shifts</p>
+                <p className="text-xs text-gray-400 mt-1.5">214 confirmed shifts · 3 agencies</p>
+              </div>
+              <div className="flex flex-wrap gap-2 mb-5">
+                <span className="text-xs bg-amber-light text-amber-dark px-3 py-1.5 rounded-full font-semibold">Consistently Reliable</span>
+                <span className="text-xs bg-amber-light text-amber-dark px-3 py-1.5 rounded-full font-semibold">Dementia Specialist</span>
               </div>
               <div className="space-y-2.5 mb-5">
                 {['PSW Certification ✓', 'CPR/AED ✓', 'TB Test ✓', 'Vulnerable Sector ✓'].map((item) => (
@@ -339,9 +340,9 @@ function SolutionSection() {
                 ))}
               </div>
               <div>
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Confirmed by</p>
+                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Verified by</p>
                 <div className="flex gap-2 flex-wrap">
-                  {['Bayshore', 'SE Health', 'CBI'].map((name) => (
+                  {['Bayshore', 'SE Health', 'CBI Health'].map((name) => (
                     <span key={name} className="text-xs bg-bg-alt border border-border text-navy px-2.5 py-1 rounded-lg font-medium">{name}</span>
                   ))}
                 </div>
@@ -361,17 +362,17 @@ const steps = [
   {
     num: '01',
     title: 'Build your portfolio',
-    desc: "Tell us who you are, what you have done, and upload your credentials. Takes about 10 minutes.",
+    desc: "Upload your credentials, your experience, your availability. Takes about 10 minutes. Every field you complete makes you more visible.",
   },
   {
     num: '02',
     title: 'Agencies confirm your history',
-    desc: 'Every agency you work with verifies your shift history and adds their rating. Over time, your portfolio becomes undeniable.',
+    desc: 'Every agency you work with verifies your shift history and adds their rating. Your portfolio grows stronger with every engagement.',
   },
   {
     num: '03',
-    title: 'Better opportunities find you',
-    desc: 'Share one link with any agency. Your verified portfolio speaks for itself — better roles, better pay, better fits.',
+    title: 'Agencies find you',
+    desc: 'When a agency needs someone with your skills, your verified portfolio appears in their search. No applications. No phone calls. No starting from zero.',
   },
 ]
 
@@ -382,7 +383,7 @@ function HowItWorks() {
         <div className="text-center mb-16">
           <SectionLabel>How it works</SectionLabel>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-navy leading-tight">
-            Three steps. Ten minutes.<br />Yours forever.
+            Three steps.<br />Yours for the rest of your career.
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -411,7 +412,7 @@ function SocialProof() {
       <div className="max-w-3xl mx-auto text-center">
         <Quote className="w-10 h-10 text-amber mx-auto mb-8 opacity-60" />
         <blockquote className="text-2xl sm:text-3xl font-medium text-navy leading-relaxed mb-8 italic">
-          "I've been a PSW for 7 years. Every time I switched agencies, I lost everything — my standing, my references, my history. I had to prove myself from scratch every single time. This is the first thing that's actually for us."
+          "Seven years. Three agencies. Every time I walked in the door, I was the new person all over again. That stops now."
         </blockquote>
         <div className="flex items-center justify-center gap-3">
           <div className="w-10 h-10 rounded-full bg-navy flex items-center justify-center text-white text-sm font-bold">MT</div>
@@ -477,7 +478,7 @@ function ForAgencies({ onJoinClick }) {
 const faqs = [
   {
     q: 'Is this really free for caregivers?',
-    a: "Yes. Caregivers get a free portfolio to start. No credit card, no tiered plan, no catch. Agencies pay for access to the recruiting and screening tools — that's what keeps it free for caregivers.",
+    a: "Yes. Free for caregivers, always. No credit card, no tiered plan, no catch. We built this because the system was broken — you shouldn't pay to fix it.",
   },
   {
     q: 'How is my reputation verified?',
