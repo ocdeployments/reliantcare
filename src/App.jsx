@@ -64,7 +64,7 @@ function Nav({ onJoinClick }) {
 // ──────────────────────────────────────────────
 // EMAIL FORM
 // ──────────────────────────────────────────────
-function EmailForm({ variant = 'default', buttonText = "Build My Profile — It's Free", id }) {
+function EmailForm({ variant = 'default', buttonText = "Build My Portfolio — Free to Start", id }) {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState('idle') // idle | loading | success | error
   const [errorMsg, setErrorMsg] = useState('')
@@ -185,14 +185,14 @@ function Hero({ onJoinClick }) {
         </h1>
 
         <p className="text-lg sm:text-xl text-gray-500 leading-relaxed max-w-2xl mx-auto mb-10 animate-fade-up opacity-0" style={{ animationDelay: '160ms', animationFillMode: 'forwards' }}>
-          ReliantCare builds your verified, portable reputation profile — free forever. One place your credentials, work history, and score travel with you across every agency.
+          ReliantCare builds your verified, portable career portfolio — free to start. Credentials, work history, and a reliability score that travels with you and opens doors to better opportunities.
         </p>
 
         <div className="animate-fade-up opacity-0" style={{ animationDelay: '240ms', animationFillMode: 'forwards' }}>
-          <EmailForm buttonText="Build My Profile — It's Free" />
+          <EmailForm buttonText="Build My Portfolio — Free to Start" />
           <p className="flex items-center justify-center gap-1.5 text-sm text-gray-400 mt-4">
             <Lock className="w-3.5 h-3.5" />
-            No credit card. No catch. Free forever.
+            No credit card. No catch. Free to start.
           </p>
         </div>
 
@@ -360,18 +360,18 @@ function SolutionSection() {
 const steps = [
   {
     num: '01',
-    title: 'Create your profile',
+    title: 'Build your portfolio',
     desc: "Tell us who you are, what you have done, and upload your credentials. Takes about 10 minutes.",
   },
   {
     num: '02',
     title: 'Agencies confirm your history',
-    desc: 'Every agency you work with verifies your shift history and adds their rating. Over time, your profile becomes undeniable.',
+    desc: 'Every agency you work with verifies your shift history and adds their rating. Over time, your portfolio becomes undeniable.',
   },
   {
     num: '03',
-    title: 'Your reputation follows you',
-    desc: 'One link. Share it with any agency. They see exactly who you are and what you have done. No more starting from zero.',
+    title: 'Better opportunities find you',
+    desc: 'Share one link with any agency. Your verified portfolio speaks for itself — better roles, better pay, better fits.',
   },
 ]
 
@@ -477,19 +477,19 @@ function ForAgencies({ onJoinClick }) {
 const faqs = [
   {
     q: 'Is this really free for caregivers?',
-    a: "Yes. Caregivers get a free profile forever. No credit card, no tiered plan, no catch. Agencies pay for access to the recruiting and screening tools. That's how we keep it free for the people who need it most.",
+    a: "Yes. Caregivers get a free portfolio to start. No credit card, no tiered plan, no catch. Agencies pay for access to the recruiting and screening tools — that's what keeps it free for caregivers.",
   },
   {
     q: 'How is my reputation verified?',
-    a: 'Your profile is built from data confirmed by the agencies you have worked with — not self-reported claims. The more agencies that confirm your history, the stronger your profile becomes.',
+    a: 'Your portfolio is built from data confirmed by the agencies you have worked with — not self-reported claims. The more agencies that confirm your history, the stronger your portfolio becomes.',
   },
   {
     q: 'Who owns my data?',
-    a: 'You do. Your profile, your history, your ratings — all yours. You control what gets shared and with whom. We never sell your data.',
+    a: 'You do. Your portfolio, your history, your ratings — all yours. You control what gets shared and with whom. We never sell your data.',
   },
   {
     q: 'Does this work across different agencies?',
-    a: 'Yes. Your profile works with any agency on the platform — in any city. Move from Ottawa to Toronto, your reputation moves with you.',
+    a: 'Yes. Your portfolio works with any agency on the platform — in any city. Move from Ottawa to Toronto, your reputation moves with you.',
   },
   {
     q: 'When does this launch?',
@@ -497,7 +497,7 @@ const faqs = [
   },
   {
     q: 'What about family privacy?',
-    a: "Family ratings are shared with your consent and are tied to your caregiver profile — not to the family's personal information. We do not store medical data, address, or anything beyond your caregiving history.",
+    a: "Family ratings are shared with your consent and are tied to your caregiver portfolio — not to the family's personal information. We do not store medical data, address, or anything beyond your caregiving history.",
   },
 ]
 
@@ -544,7 +544,7 @@ function FinalCTA({ onJoinClick }) {
           The industry's been asking<br />for this for years.
         </h2>
         <p className="text-xl text-amber font-semibold mb-10">Be first.</p>
-        <EmailForm buttonText="Build My Profile — It's Free" id="final-cta" />
+        <EmailForm buttonText="Build My Portfolio — Free to Start" id="final-cta" />
         <div className="flex items-center justify-center gap-2 mt-4">
           <Lock className="w-3.5 h-3.5 text-gray-400" />
           <p className="text-sm text-gray-400">No credit card. No catch. Free forever.</p>
