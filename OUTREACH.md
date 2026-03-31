@@ -18,11 +18,11 @@ Every time I walked into a new agency, I started from zero. Same credentials. Br
 
 That's the problem we're fixing.
 
-ReliantCare builds your verified, portable career portfolio — your credentials, your work history, your reliability score — uploaded once, owned forever, visible everywhere you go.
+ReliantCare Network builds your verified, portable career portfolio — your credentials, your work history, your earned reputation — uploaded once, owned forever, visible everywhere you go.
 
-The better your portfolio, the better the opportunities that find you. Better roles. Better pay. Better fits.
+Agencies find you. You don't chase them.
 
-Free to start. Caregivers always.
+Free for caregivers. Always.
 
 **[Join the waitlist → reliantcarenetwork.com]**
 
@@ -35,9 +35,9 @@ Free to start. Caregivers always.
 **Body:**
 Seven years of experience. Three agencies. Every time you start from zero — same credentials, same reference calls, same "we'll take your word for it."
 
-We're building ReliantCare — a portable career portfolio for caregivers. Your work history follows you. Your reliability score is verified by the agencies you've actually worked with. The stronger your portfolio, the better your opportunities.
+We're building ReliantCare Network — a portable career portfolio for caregivers. Your work history follows you. Your reliability score is verified by the agencies you've actually worked with. The stronger your portfolio, the better your opportunities.
 
-We're launching in Ontario first. Free to start.
+We're launching in Ontario first. Free for caregivers. Always.
 
 **[Join waitlist](https://reliantcarenetwork.com)**
 
@@ -50,9 +50,9 @@ We're launching in Ontario first. Free to start.
 **Body:**
 For most PSWs, it's not finding work. It's proving yourself all over again every single time.
 
-ReliantCare is a free platform that builds your verified caregiver portfolio once — credentials, shift history, reliability score — and it travels with you to every agency you work with. The better your portfolio, the more agencies compete for you.
+ReliantCare Network builds your verified caregiver portfolio once — credentials, shift history, earned reputation — and it travels with you to every agency you work with. When the right agency is looking, they find you.
 
-Ontario launch coming. Free to start.
+Ontario launch coming. Free for caregivers. Always.
 
 **[reliantcarenetwork.com](https://reliantcarenetwork.com)**
 
@@ -62,16 +62,18 @@ Ontario launch coming. Free to start.
 
 ---
 
-### Ontario PSW Home and Private Care / Caregiver/Companion/Elderly Care/PSW in Canada
+### Ontario PSW Home and Private Care / Caregiver/Companion/Elderly Care/ PSW in Canada
 
 **Post:**
 Every time you switch agencies, you start from zero.
 
 Same credentials. Same reference calls. Same interview where you have to convince someone who has never seen you work that you're good at your job.
 
-ReliantCare is building a free career portfolio for caregivers — a verified record of your work history, your credentials, your reliability score. It travels with you to every agency.
+ReliantCare Network builds your verified caregiver portfolio — a complete record of your work history, your credentials, your earned reputation. It travels with you to every agency.
 
-The better your portfolio, the better the opportunities that find you.
+Agencies find you. You don't chase them.
+
+Free for caregivers. Always.
 
 Join the waitlist → **[reliantcarenetwork.com](https://reliantcarenetwork.com)**
 
@@ -86,9 +88,9 @@ You've earned your reputation — every shift, every family, every time you show
 
 But every time you walk into a new agency, you start from zero again.
 
-ReliantCare is a free platform that builds your verified caregiver portfolio. Your work history, your reliability score, your credentials — verified by the agencies you've actually worked with. Yours forever.
+ReliantCare Network builds your verified caregiver portfolio. Your work history, your earned reputation, your credentials — verified by the agencies you've actually worked with. Yours forever.
 
-A strong portfolio doesn't just move with you. It opens better doors. Better agencies. Better pay.
+Agencies find you. Free for caregivers. Always.
 
 **[Join the waitlist → reliantcarenetwork.com](https://reliantcarenetwork.com)**
 
@@ -108,7 +110,7 @@ Quick one — when was the last time you hired a caregiver and actually knew the
 
 Not a resume. Not a reference call nobody picks up. Real data.
 
-We're building ReliantCare — a platform where caregivers have verified, portable portfolios. You see shift history, reliability scores, and feedback from families — before you make an offer.
+We're building ReliantCare Network — a platform where caregivers have verified, portable portfolios. When your agency needs someone, you find them by verified history, not by who applied first.
 
 We'd love to show you how it works. 10-minute call, no pitch.
 
@@ -171,9 +173,9 @@ Hey [Name],
 
 I saw you're in the home care space — I'm building ReliantCare, a portable reputation platform for caregivers.
 
-The idea: every shift a caregiver completes gets logged. Every agency rates them. Their portfolio travels with them across every agency they work for. The better their portfolio, the better opportunities find them.
+The idea: every shift a caregiver completes gets logged. Every agency rates them. Their portfolio travels with them across every agency they work for. When the right agency is looking, they find that caregiver.
 
-Free for caregivers to start. Agencies pay for access to verified candidates and our AI recruiting agent.
+Free for caregivers. Always. Agencies pay for access to verified candidates and our AI recruiting agent.
 
 Would love 5 mins of your time to get your take on whether this actually solves a real problem. Interested?
 
