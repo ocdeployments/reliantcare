@@ -49,7 +49,7 @@ function Nav({ onJoinClick }) {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="/" className="text-xl font-extrabold text-navy tracking-tight">ReliantCare</a>
+        <a href="/" className="text-xl font-extrabold text-navy tracking-tight">ReliantCare Network</a>
         <button
           onClick={onJoinClick}
           className="bg-amber text-navy font-semibold text-sm px-5 py-2.5 rounded-xl hover:bg-amber-dark transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
@@ -185,7 +185,7 @@ function Hero({ onJoinClick }) {
         </h1>
 
         <p className="text-lg sm:text-xl text-gray-500 leading-relaxed max-w-2xl mx-auto mb-10 animate-fade-up opacity-0" style={{ animationDelay: '160ms', animationFillMode: 'forwards' }}>
-          ReliantCare builds your verified, portable career portfolio — free to start. Credentials, work history, and a reliability score that travels with you and opens doors to better opportunities.
+          ReliantCare Network builds your verified, portable career portfolio — free to start. Credentials, work history, and a reliability score that travels with you and opens doors to better opportunities.
         </p>
 
         <div className="animate-fade-up opacity-0" style={{ animationDelay: '240ms', animationFillMode: 'forwards' }}>
@@ -439,7 +439,7 @@ function ForAgencies({ onJoinClick }) {
               Stop hiring blind.<br />Start hiring proven.
             </h2>
             <p className="text-gray-300 leading-relaxed mb-4 text-lg">
-              ReliantCare gives your agency a verified pool of pre-screened caregivers. You see real shift history, real reliability scores, and real feedback — before you make an offer.
+              ReliantCare Network gives your agency a verified pool of pre-screened caregivers. You see real shift history, real reliability scores, and real feedback — before you make an offer.
             </p>
             <p className="text-gray-400 leading-relaxed mb-10">
               Our AI recruiting agent handles the screening and scheduling so you are not losing hours to phone tag.
@@ -562,7 +562,7 @@ function Footer() {
     <footer className="bg-navy py-10 px-6">
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
-          <p className="text-white font-extrabold text-lg">ReliantCare</p>
+          <p className="text-white font-extrabold text-lg">ReliantCare Network</p>
           <p className="text-gray-400 text-sm mt-0.5">Built for caregivers. Free forever.</p>
         </div>
         <div className="flex items-center gap-6">
@@ -600,7 +600,7 @@ function PrivacyPage() {
     <div className="min-h-screen bg-bg font-sans">
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <a href="/" className="text-xl font-extrabold text-navy tracking-tight">ReliantCare</a>
+          <a href="/" className="text-xl font-extrabold text-navy tracking-tight">ReliantCare Network</a>
           <a href="/" className="text-sm text-gray-500 hover:text-navy transition-colors">← Back to home</a>
         </div>
       </nav>
@@ -630,7 +630,7 @@ function PrivacyPage() {
               icon: Shield,
               body: (
                 <>
-                  <p className="text-gray-600 text-[15px] leading-relaxed">When you join the ReliantCare waitlist, we collect:</p>
+                  <p className="text-gray-600 text-[15px] leading-relaxed">When you join the ReliantCare Network waitlist, we collect:</p>
                   <ul className="list-disc pl-5 space-y-2 text-gray-600 text-[15px] mt-3">
                     <li><strong>Email address</strong> — to notify you when early access opens</li>
                     <li><strong>How you found us</strong> — so we know which channels are working</li>
@@ -647,7 +647,7 @@ function PrivacyPage() {
                 <>
                   <p className="text-gray-600 text-[15px] leading-relaxed">We use your information to:</p>
                   <ul className="list-disc pl-5 space-y-2 text-gray-600 text-[15px] mt-3">
-                    <li>Notify you when ReliantCare early access is available</li>
+                    <li>Notify you when ReliantCare Network early access is available</li>
                     <li>Understand how many people are interested in the platform</li>
                     <li>Improve the waitlist experience and future product</li>
                     <li>Send occasional updates about the platform progress (no more than 1-2 per month)</li>
@@ -685,7 +685,7 @@ function PrivacyPage() {
               body: (
                 <>
                   <p className="text-gray-600 text-[15px] leading-relaxed">
-                    When the full ReliantCare platform launches, we will collect additional information to power the reputation system:
+                    When the full ReliantCare Network platform launches, we will collect additional information to power the reputation system:
                   </p>
                   <ul className="list-disc pl-5 space-y-2 text-gray-600 text-[15px] mt-3">
                     <li><strong>Caregiver profiles</strong> — name, credentials, work history, city, availability</li>
@@ -744,7 +744,7 @@ function PrivacyPage() {
       </main>
       <footer className="bg-navy py-8 px-6">
         <div className="max-w-6xl mx-auto text-center">
-          <p className="text-white font-extrabold text-base">ReliantCare</p>
+          <p className="text-white font-extrabold text-base">ReliantCare Network</p>
           <p className="text-gray-400 text-sm mt-1">Built for caregivers. Free forever.</p>
         </div>
       </footer>
