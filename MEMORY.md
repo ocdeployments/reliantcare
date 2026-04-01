@@ -1,6 +1,6 @@
 # ReliantCare Network — Project Memory
 
-> Last updated: 2026-03-30
+> Last updated: 2026-04-01
 > Read this before every session. This is the authoritative source of truth for this project.
 
 ---
@@ -344,4 +344,4 @@ Border:         #E5E5E3  (subtle)
 
 ---
 
-*Last session summary (2026-03-30): Landing page fully built and running on localhost:5173. Full product vision documented. Competitive landscape researched. Messaging strategy written. Lessons learned captured.*
+*Last session summary (2026-03-31): Two survey documents designed and saved — SURVEY_QUESTIONS.md (10 landing page questions, grade 5 reading level, founding caregiver framing) and SURVEY_ANALYSIS.md (27-question redundancy audit, final 10 recommended). Survey ready for Typeform/Google Forms implementation.*
