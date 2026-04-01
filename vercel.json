@@ -1,7 +1,3 @@
 {
-  "projects": [
-    {
-      "path": "portal"
-    }
-  ]
+  "rootDirectory": "portal"
 }
